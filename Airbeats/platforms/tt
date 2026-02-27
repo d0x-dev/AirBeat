@@ -1,0 +1,164 @@
+import asyncio
+import re
+from typing import Union
+import aiohttp
+
+YOUR_API_URL = None
+FALLBACK_API_URL = "https://shrutibots.site"
+
+
+# ---------------- LOAD API ---------------- #
+
+async def load_api_url():
+    global YOUR_API_URL
+
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(
+                "https://pastebin.com/raw/rLsBhAQa",
+                timeout=aiohttp.ClientTimeout(total=10),
+            ) as response:
+
+                if response.status == 200:
+                    YOUR_API_URL = (await response.text()).strip()
+                else:
+                    YOUR_API_URL = FALLBACK_API_URL
+
+    except Exception:
+        YOUR_API_URL = FALLBACK_API_URL
+
+
+try:
+    loop = asyncio.get_event_loop()
+    if loop.is_running():
+        asyncio.create_task(load_api_url())
+    else:
+        loop.run_until_complete(load_api_url())
+except RuntimeError:
+    pass
+
+
+# ---------------- STREAM CORE ---------------- #
+
+async def get_stream_url(link: str, media_type: str = "video") -> str:
+    global YOUR_API_URL
+
+    if not YOUR_API_URL:
+        await load_api_url()
+        if not YOUR_API_URL:
+            YOUR_API_URL = FALLBACK_API_URL
+
+    # Extract video ID
+    if "v=" in link:
+        video_id = link.split("v=")[-1].split("&")[0]
+    elif "youtu.be/" in link:
+        video_id = link.split("youtu.be/")[-1].split("?")[0]
+    else:
+        video_id = link.strip()
+
+    if not video_id or len(video_id) < 3:
+        return None
+
+    try:
+        async with aiohttp.ClientSession() as session:
+
+            # Step 1: Get download token
+            async with session.get(
+                f"{YOUR_API_URL}/download",
+                params={"url": video_id, "type": media_type},
+                timeout=aiohttp.ClientTimeout(total=30),
+            ) as response:
+
+                if response.status != 200:
+                    return None
+
+                data = await response.json()
+                token = data.get("download_token")
+
+                if not token:
+                    return None
+
+            # Step 2: Build stream endpoint
+            stream_api = f"{YOUR_API_URL}/stream/{video_id}?type={media_type}&token={token}"
+
+            # Step 3: Check redirect
+            async with session.get(
+                stream_api,
+                allow_redirects=False,
+                timeout=aiohttp.ClientTimeout(total=30),
+            ) as stream_response:
+
+                # If redirect → real Google stream
+                if stream_response.status in (301, 302):
+                    return stream_response.headers.get("Location")
+
+                # If 200 → server streams directly
+                if stream_response.status == 200:
+                    return stream_api
+
+                return None
+
+    except Exception:
+        return None
+
+
+# ---------------- YOUTUBE CLASS ---------------- #
+
+class YouTubeAPI:
+    def __init__(self):
+        self.base = "https://www.youtube.com/watch?v="
+        self.regex = r"(?:youtube\.com|youtu\.be)"
+
+    async def exists(self, link: str, videoid: Union[bool, str] = None):
+        if videoid:
+            link = self.base + link
+        return bool(re.search(self.regex, link))
+
+    async def video(self, link: str, videoid: Union[bool, str] = None):
+        if videoid:
+            link = self.base + link
+
+        if "&" in link:
+            link = link.split("&")[0]
+
+        stream_url = await get_stream_url(link, "video")
+
+        if stream_url:
+            return 1, stream_url
+        else:
+            return 0, "Stream generation failed"
+
+    async def audio(self, link: str, videoid: Union[bool, str] = None):
+        if videoid:
+            link = self.base + link
+
+        if "&" in link:
+            link = link.split("&")[0]
+
+        stream_url = await get_stream_url(link, "audio")
+
+        if stream_url:
+            return 1, stream_url
+        else:
+            return 0, "Stream generation failed"
+if __name__ == "__main__":
+    import asyncio
+
+    async def main():
+        url = input("Enter YouTube URL: ").strip()
+        media = input("Type video or audio (default video): ").strip().lower()
+
+        if media not in ["video", "audio"]:
+            media = "video"
+
+        api = YouTubeAPI()
+        status, result = await api.video(url) if media == "video" else await api.audio(url)
+
+        if status == 1:
+            print("\nStream URL:\n")
+            print(result)
+        else:
+            print("\nError:\n")
+            print(result)
+
+    asyncio.run(main())

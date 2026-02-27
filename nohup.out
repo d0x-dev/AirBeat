@@ -1,0 +1,183 @@
+[27-Feb-26 00:14:36 - INFO] - Airbeats.core.dir - Directories Updated.
+[27-Feb-26 00:14:36 - INFO] - Airbeats.core.git - Git Client Found [VPS DEPLOYER]
+[27-Feb-26 00:14:36 - INFO] - Airbeats.misc -  Database loaded..
+[27-Feb-26 00:14:36 - INFO] - Airbeats.core.bot - Starting Bot...
+[27-Feb-26 00:14:38 - INFO] - Airbeats.platforms.Youtube.py - API URL loaded successfully
+[27-Feb-26 00:14:38 - INFO] - Airbeats.misc - Sudo users loaded...
+[27-Feb-26 00:14:43 - INFO] - Airbeats.core.bot - Music Bot Started as Aɪʀ Bᴇᴀᴛs ✗ 
+[27-Feb-26 00:14:43 - INFO] - telethon.crypto.aes - libssl detected, it will be used for encryption
+[27-Feb-26 00:14:44 - INFO] - Airbeats.plugins - Successfully Imported Modules...
+[27-Feb-26 00:14:44 - INFO] - Airbeats.core.userbot - Starting Assistants...
+[27-Feb-26 00:14:45 - INFO] - Airbeats.core.userbot - Assistant Started as <a href=tg://user?id=8288296482>𝐒𝐭𝐨𝐫𝐦 ✗ 𝐀𝐬𝐬𝐢𝐬𝐭𝐚𝐧𝐭</a>
+[27-Feb-26 00:14:45 - INFO] - Airbeats.core.call - Starting PyTgCalls Client...
+
+[27-Feb-26 00:14:54 - INFO] - Airbeats - ᴅʀᴏᴘ ʏᴏᴜʀ ɢɪʀʟꜰʀɪᴇɴᴅ'ꜱ ɴᴜᴍʙᴇʀ ᴀᴛ @BRANDED_PAID_CC ᴊᴏɪɴ @BRANDRD_BOT , @BRANDED_WORLD ꜰᴏʀ ᴀɴʏ ɪꜱꜱᴜᴇꜱ
+[27-Feb-26 00:15:38 - ERROR] - pyrogram.dispatcher - Telegram says: [400 MESSAGE_NOT_MODIFIED] - The message was not modified because you tried to edit it using the same content (caused by "messages.EditMessage")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/dispatcher.py", line 355, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/home/ubuntu/Airbeats/Airbeats/plugins/bot/help.py", line 98, in helper_cb
+    await CallbackQuery.edit_message_text(Helper.HELP_M, reply_markup=InlineKeyboardMarkup(BUTTONS.MBUTTON))
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/types/bots_and_keyboards/callback_query.py", line 200, in edit_message_text
+    return await self._client.edit_message_text(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/methods/messages/edit_message_text.py", line 92, in edit_message_text
+    r = await self.invoke(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/methods/advanced/invoke.py", line 94, in invoke
+    r = await session.invoke(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/session/session.py", line 401, in invoke
+    return await self.send(query, timeout=timeout)
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/session/session.py", line 369, in send
+    RPCError.raise_it(result, type(data))
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/errors/rpc_error.py", line 91, in raise_it
+    raise getattr(
+pyrogram.errors.exceptions.bad_request_400.MessageNotModified: Telegram says: [400 MESSAGE_NOT_MODIFIED] - The message was not modified because you tried to edit it using the same content (caused by "messages.EditMessage")
+[27-Feb-26 09:01:22 - ERROR] - pyrogram.dispatcher - Telegram says: [420 FLOOD_WAIT_X] - A wait of 17 seconds is required (caused by "messages.SendMessage")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/dispatcher.py", line 355, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/home/ubuntu/Airbeats/Airbeats/utils/decorators/play.py", line 184, in wrapper
+    return await command(
+  File "/home/ubuntu/Airbeats/Airbeats/plugins/play/play.py", line 56, in play_commnd
+    mystic = await message.reply_text(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/types/messages_and_media/message.py", line 1365, in reply_text
+    return await self._client.send_message(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/methods/messages/send_message.py", line 168, in send_message
+    r = await self.invoke(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/methods/advanced/invoke.py", line 94, in invoke
+    r = await session.invoke(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/session/session.py", line 401, in invoke
+    return await self.send(query, timeout=timeout)
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/session/session.py", line 369, in send
+    RPCError.raise_it(result, type(data))
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/errors/rpc_error.py", line 91, in raise_it
+    raise getattr(
+pyrogram.errors.exceptions.flood_420.FloodWait: Telegram says: [420 FLOOD_WAIT_X] - A wait of 17 seconds is required (caused by "messages.SendMessage")
+[27-Feb-26 09:02:13 - ERROR] - pyrogram.dispatcher - Telegram says: [420 FLOOD_WAIT_X] - A wait of 26 seconds is required (caused by "messages.EditMessage")
+Traceback (most recent call last):
+  File "/home/ubuntu/Airbeats/Airbeats/plugins/play/play.py", line 357, in play_commnd
+    await stream(
+  File "/home/ubuntu/Airbeats/Airbeats/utils/stream/stream.py", line 202, in stream
+    await app.send_photo(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/methods/messages/send_photo.py", line 219, in send_photo
+    r = await self.invoke(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/methods/advanced/invoke.py", line 94, in invoke
+    r = await session.invoke(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/session/session.py", line 401, in invoke
+    return await self.send(query, timeout=timeout)
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/session/session.py", line 369, in send
+    RPCError.raise_it(result, type(data))
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/errors/rpc_error.py", line 91, in raise_it
+    raise getattr(
+pyrogram.errors.exceptions.flood_420.FloodWait: Telegram says: [420 FLOOD_WAIT_X] - A wait of 26 seconds is required (caused by "messages.SendMedia")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/dispatcher.py", line 355, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/home/ubuntu/Airbeats/Airbeats/utils/decorators/play.py", line 184, in wrapper
+    return await command(
+  File "/home/ubuntu/Airbeats/Airbeats/plugins/play/play.py", line 373, in play_commnd
+    return await mystic.edit_text(err)
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/types/messages_and_media/message.py", line 3968, in edit_text
+    return await self._client.edit_message_text(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/methods/messages/edit_message_text.py", line 92, in edit_message_text
+    r = await self.invoke(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/methods/advanced/invoke.py", line 94, in invoke
+    r = await session.invoke(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/session/session.py", line 401, in invoke
+    return await self.send(query, timeout=timeout)
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/session/session.py", line 369, in send
+    RPCError.raise_it(result, type(data))
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/errors/rpc_error.py", line 91, in raise_it
+    raise getattr(
+pyrogram.errors.exceptions.flood_420.FloodWait: Telegram says: [420 FLOOD_WAIT_X] - A wait of 26 seconds is required (caused by "messages.EditMessage")
+[27-Feb-26 09:03:02 - ERROR] - pyrogram.dispatcher - Telegram says: [420 FLOOD_WAIT_X] - A wait of 38 seconds is required (caused by "messages.EditMessage")
+Traceback (most recent call last):
+  File "/home/ubuntu/Airbeats/Airbeats/plugins/play/play.py", line 357, in play_commnd
+    await stream(
+  File "/home/ubuntu/Airbeats/Airbeats/utils/stream/stream.py", line 202, in stream
+    await app.send_photo(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/methods/messages/send_photo.py", line 219, in send_photo
+    r = await self.invoke(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/methods/advanced/invoke.py", line 94, in invoke
+    r = await session.invoke(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/session/session.py", line 401, in invoke
+    return await self.send(query, timeout=timeout)
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/session/session.py", line 369, in send
+    RPCError.raise_it(result, type(data))
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/errors/rpc_error.py", line 91, in raise_it
+    raise getattr(
+pyrogram.errors.exceptions.flood_420.FloodWait: Telegram says: [420 FLOOD_WAIT_X] - A wait of 38 seconds is required (caused by "messages.SendMedia")
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/dispatcher.py", line 355, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/home/ubuntu/Airbeats/Airbeats/utils/decorators/play.py", line 184, in wrapper
+    return await command(
+  File "/home/ubuntu/Airbeats/Airbeats/plugins/play/play.py", line 373, in play_commnd
+    return await mystic.edit_text(err)
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/types/messages_and_media/message.py", line 3968, in edit_text
+    return await self._client.edit_message_text(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/methods/messages/edit_message_text.py", line 92, in edit_message_text
+    r = await self.invoke(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/methods/advanced/invoke.py", line 94, in invoke
+    r = await session.invoke(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/session/session.py", line 401, in invoke
+    return await self.send(query, timeout=timeout)
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/session/session.py", line 369, in send
+    RPCError.raise_it(result, type(data))
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/errors/rpc_error.py", line 91, in raise_it
+    raise getattr(
+pyrogram.errors.exceptions.flood_420.FloodWait: Telegram says: [420 FLOOD_WAIT_X] - A wait of 38 seconds is required (caused by "messages.EditMessage")
+[27-Feb-26 09:09:25 - ERROR] - pyrogram.dispatcher - Telegram says: [420 FLOOD_WAIT_X] - A wait of 23 seconds is required (caused by "messages.SendMessage")
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/pytgcalls/methods/stream/change_stream.py", line 28, in change_stream
+    await ToAsync(
+  File "/usr/local/lib/python3.10/dist-packages/pytgcalls/to_async.py", line 13, in _run
+    return await self._loop.run_in_executor(
+  File "/usr/lib/python3.10/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+ntgcalls.ConnectionNotFound: Connection with chat id "-1003760225009" not found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/Airbeats/Airbeats/plugins/admins/skip.py", line 189, in skip
+    await Hotty.skip_stream(chat_id, queued, video=status, image=image)
+  File "/home/ubuntu/Airbeats/Airbeats/core/call.py", line 270, in skip_stream
+    await assistant.change_stream(
+  File "/usr/local/lib/python3.10/dist-packages/pytgcalls/mutex.py", line 33, in async_wrapper
+    return await func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/pytgcalls/statictypes.py", line 96, in async_wrapper
+    return await func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/pytgcalls/mtproto_required.py", line 19, in async_wrapper
+    return await func(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/pytgcalls/methods/stream/change_stream.py", line 36, in change_stream
+    raise NotInGroupCallError()
+pytgcalls.exceptions.NotInGroupCallError: The userbot there isn't in a group call
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/dispatcher.py", line 355, in handler_worker
+    await handler.callback(self.client, *args)
+  File "/home/ubuntu/Airbeats/Airbeats/utils/decorators/admins.py", line 113, in wrapper
+    return await mystic(client, message, _, chat_id)
+  File "/home/ubuntu/Airbeats/Airbeats/plugins/admins/skip.py", line 191, in skip
+    return await message.reply_text(_["call_6"])
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/types/messages_and_media/message.py", line 1365, in reply_text
+    return await self._client.send_message(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/methods/messages/send_message.py", line 168, in send_message
+    r = await self.invoke(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/methods/advanced/invoke.py", line 94, in invoke
+    r = await session.invoke(
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/session/session.py", line 401, in invoke
+    return await self.send(query, timeout=timeout)
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/session/session.py", line 369, in send
+    RPCError.raise_it(result, type(data))
+  File "/usr/local/lib/python3.10/dist-packages/pyrogram/errors/rpc_error.py", line 91, in raise_it
+    raise getattr(
+pyrogram.errors.exceptions.flood_420.FloodWait: Telegram says: [420 FLOOD_WAIT_X] - A wait of 23 seconds is required (caused by "messages.SendMessage")
